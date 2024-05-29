@@ -1,0 +1,22 @@
+/* Nome das classes deve serem escritos em camelCase, não utilize hífen */
+/* O CSS MODULES disponibiliza algumas funcionalidades extras, como:
+ - a definição de variáveis,
+ - composição de elementos, 
+ - definições de classes no contexto global */
+
+.titulo {
+    color: red;
+}
+
+.preco {
+    font-weight: bolder;
+}
+
+.comprar {
+    background-color: green;
+}
+
+/* para definir uma variável global */
+:global .container {
+    background-color: yellow;
+}
