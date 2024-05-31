@@ -1,0 +1,11 @@
+.fundo {
+    width: 250px;
+    height: 250px;
+    background-color: #eee;
+    background-image: url('./img/moon.avif');
+    background-size: cover;
+    background-position: center;
+    border: 10px solid #eee;
+    border-radius: 50%;
+    overflow: hidden;
+}
