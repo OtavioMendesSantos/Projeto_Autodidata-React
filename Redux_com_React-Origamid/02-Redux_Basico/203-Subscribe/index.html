@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./redux.min.js"></script>
+    <title>Redux</title>
+  </head>
+  <body>
+    <h1>Redux</h1>
+    <h2>Total:<span id="total"></span></h2>
+    <button id="incrementar">incrementar 10</button>
+    <button id="decrementar">decrementar 10</button>
+    <script>
+      const INCREMENTAR = 'INCREMENTAR'
+      const DECREMENTAR = 'DECREMENTAR'
+      const initialState = 100
+
+      function reducer (state = initialState, action) {
+        switch (action.type) {
+          case INCREMENTAR:
+            return state + action.payload
+            break
+          case DECREMENTAR:
+            return state - action.payload
+            break
+          default:
+            return state
+            break  
+        }
+      }
+
+      const store = Redux.createStore(reducer)
+      let state = store.getState()
+
+      function incrementar(payload) {
+        return {type: INCREMENTAR, payload}
+      }
+
+      function decrementar(payload) {
+        return {type: DECREMENTAR, payload}
+      }
+
+      // Ao invés de passar este obj, para facilitar, podemos tranformar numa função que retorna a action (Action Creator)
+      // store.dispatch({type: INCREMENTAR, payload: 20}) 
+      // store.dispatch({type: DECREMENTAR, payload: 10})
+      
+      function render () {
+        state = store.getState()
+        const total = document.getElementById('total')
+        total.innerText = state
+      }
+      render()
+      // É ativado todas as vezes que uma ação for despachada via dispatch.
+      const unsubscribe = store.subscribe(render) 
+      // o retorno de subscribe é uma função que pode ser chamada para parar sua execução
+      // Caso queira que a função pare de ser chamada, basta chamar a função unsubscribe
+      // unsubscribe()
+
+      const buttonMais = document.getElementById('incrementar')
+      buttonMais.addEventListener('click', () => store.dispatch(incrementar(10)))
+      const buttonMenos = document.getElementById('decrementar')
+      buttonMenos.addEventListener('click', () => store.dispatch(decrementar(10)))
+    </script>
+  </body>
+</html>
