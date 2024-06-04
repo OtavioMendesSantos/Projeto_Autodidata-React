@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./redux.min.js"></script>
+    <title>Redux</title>
+  </head>
+  <body>
+    <h1>Redux</h1>
+    <button id="incrementar">incrementar</button>
+    <script>
+      const INCREMENTAR = 'INCREMENTAR'
+      const DECREMENTAR = 'DECREMENTAR'
+
+      const initialState = 0
+
+      function reducer (state = initialState, action) {
+        switch (action.type) {
+          case INCREMENTAR:
+            return state + action.payload
+            break
+          case DECREMENTAR:
+            return state - action.payload
+            break
+          default:
+            return state
+            break  
+        }
+      }
+
+      const store = Redux.createStore(reducer)
+      let state = store.getState()
+
+      function incrementar(payload) {
+        return {type: INCREMENTAR, payload}
+      }
+
+      function decrementar(payload) {
+        return {type: INCREMENTAR, payload}
+      }
+
+      // Ao invés de passar este obj, para facilitar, podemos tranformar numa função que retorna a action (Action Creator)
+      // store.dispatch({type: INCREMENTAR, payload: 20}) 
+      // store.dispatch({type: DECREMENTAR, payload: 10})
+      store.dispatch(incrementar(10))
+      store.dispatch(decrementar(3))
+
+      const button = document.getElementById('incrementar')
+      button.addEventListener('click', () => store.dispatch(incrementar(10)))
+    </script>
+  </body>
+</html>
