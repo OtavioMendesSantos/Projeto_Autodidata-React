@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./immer.umd.production.min.js"></script>
     <script src="./redux.min.js"></script>
     <title>Redux</title>
   </head>
@@ -10,20 +11,37 @@
     <h1>Redux</h1>
 
     <script>
-      // Imutabilidade
-      const initialState = {
+      const obj1 = {
         nome: "Otávio",
         idade: 19,
       };
 
-      function reducer(state = initialState, action) {
+      const obj2 = immer.produce(obj1, (draft) => {
+        draft.nome = "Ana";
+      });
+
+      // console.log(obj1, obj2);
+
+      // Imutabilidade
+      const initialState = {
+        nome: "Otávio",
+        sobre: {
+          dados:{
+            idade: 19,
+          },
+        }
+      };
+
+      const reducer = immer.produce((state, action) => {
         switch (action.type) {
           case "MUDAR_NOME":
-            return { ...state, nome: action.payload };
-          default:
-            return state;
+            state.nome = action.payload;
+            break;
+          case "MUDAR_IDADE":
+            state.sobre.dados.idade = action.payload;
+            break;
         }
-      }
+      }, initialState);
 
       const store = Redux.createStore(
         reducer,
@@ -33,7 +51,7 @@
 
       store.dispatch({ type: "MUDAR_NOME", payload: "Otávio" });
       store.dispatch({ type: "MUDAR_NOME", payload: "Ana" });
-      store.dispatch({ type: "MUDAR_NOME", payload: "Pedro" });
+      store.dispatch({ type: "MUDAR_IDADE", payload: 21 });
     </script>
   </body>
 </html>
