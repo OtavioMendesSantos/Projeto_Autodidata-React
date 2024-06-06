@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./redux.min.js"></script>
+    <title>Redux</title>
+  </head>
+  <body>
+    <h1>Redux</h1>
+
+    <script>
+      // Imutabilidade
+      const initialState = {
+        nome: "Otávio",
+        idade: 19,
+      };
+
+      function reducer(state = initialState, action) {
+        switch (action.type) {
+          case "MUDAR_NOME":
+            return { ...state, nome: action.payload };
+          default:
+            return state;
+        }
+      }
+
+      const store = Redux.createStore(
+        reducer,
+        window.__REDUX_DEVTOOLS_EXTENSION__ &&
+          window.__REDUX_DEVTOOLS_EXTENSION__()
+      );
+
+      store.dispatch({ type: "MUDAR_NOME", payload: "Otávio" });
+      store.dispatch({ type: "MUDAR_NOME", payload: "Ana" });
+      store.dispatch({ type: "MUDAR_NOME", payload: "Pedro" });
+    </script>
+  </body>
+</html>
