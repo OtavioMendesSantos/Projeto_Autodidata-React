@@ -4,17 +4,23 @@
 
 body {
     margin: 0;
+    padding-top: 4rem;
     color: #333333;
-    --typr-first: Helvetica, Arial, sans-serif;
+    --type-first: Helvetica, Arial, sans-serif;
     --type-second: 'Spectral', Georgia;
     font-family: var(--type-first);
 }
 
-h1, h2, h3, h4, p {
+h1,
+h2,
+h3,
+h4,
+p {
     margin: 0;
 }
 
-ul, li {
+ul,
+li {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -25,18 +31,20 @@ img {
     display: block;
 }
 
-button, input{
+button,
+input {
     display: block;
     font-size: 1rem;
     font-family: var(--type-first);
     color: #333;
 }
 
-.container{
+a {
+    text-decoration: none;
+}
+
+.container {
     max-width: 50rem;
     padding: 0 1rem;
     margin: 0 auto;
 }
-
-
-
