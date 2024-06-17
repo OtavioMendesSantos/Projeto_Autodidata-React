@@ -9,11 +9,11 @@ import Login from "./components/Login/Login";
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter >
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login/*" element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>
