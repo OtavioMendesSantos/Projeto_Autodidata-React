@@ -1,8 +1,8 @@
 import React from 'react'
-import UserPost from './endpoints/UserPost'
-import TokenPost from './endpoints/TokenPost'
-import PhotoPost from './endpoints/PhotoPost'
-import PhotoGet from './endpoints/PhotoGet'
+import UserPost from './endpoints_legacy/UserPost'
+import TokenPost from './endpoints_legacy/TokenPost'
+import PhotoPost from './endpoints_legacy/PhotoPost'
+import PhotoGet from './endpoints_legacy/PhotoGet'
 
 const Api = () => {
   return (
