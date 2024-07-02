@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import Input from '../Forms/Input'
 import Button from '../Forms/Button'
 import useForm from '../../Hooks/useForm'
-import { TOKEN_POST, USER_GET } from '../../api/Api'
 import { UserContext } from '../../UserContext'
 
 const LoginForm = () => {
     const username = useForm()
     const password = useForm()
-    const { userLogin } = useContext(UserContext);
+
+    const { userLogin, error, loading } = useContext(UserContext);
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -34,7 +34,8 @@ const LoginForm = () => {
                     name="password"
                     {...password}
                 />
-                <Button>Entrar</Button>
+                {loading ? <Button disabled>Carregando...</Button> : <Button>Entrar</Button>}
+                {error && <p>{error}</p>}
             </form>
             <Link to="/login/criar">Cadastro</Link>
         </section>
