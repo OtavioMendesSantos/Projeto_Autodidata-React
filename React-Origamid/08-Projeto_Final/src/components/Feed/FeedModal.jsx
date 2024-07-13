@@ -6,7 +6,7 @@ import Error from '../Helper/Error'
 import Loading from '../Helper/Loading'
 import PhotoContent from '../Photo/PhotoContent'
 
-const FeedModal = ({ photo }) => {
+const FeedModal = ({ photo, setModalPhoto}) => {
     const { data, loading, error, request } = useFetch()
 
     useEffect(() => {
@@ -14,12 +14,17 @@ const FeedModal = ({ photo }) => {
         request(url, options)
     }, [])
 
+    const handleOutsideClick = (event) => {
+      if (event.target === event.currentTarget) {
+        setModalPhoto(null)
+      }
+    }
+
     return (
-        <div className={styles.modal}>
+        <div className={styles.modal} onClick={handleOutsideClick}>
             {error && <Error>{error}</Error>}
             {loading && <Loading />}
             {data && <PhotoContent data={data} />}
-
         </div>
     )
 }

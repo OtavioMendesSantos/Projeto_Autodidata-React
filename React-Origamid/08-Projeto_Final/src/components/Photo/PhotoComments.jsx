@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const PhotoComments = () => {
+const PhotoComments = () => {
   return (
     <div>PhotoComments</div>
   )
 }
+
+export default PhotoComments	
