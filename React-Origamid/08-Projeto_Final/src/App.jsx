@@ -9,6 +9,7 @@ import Login from "./components/Login/Login";
 import User from "./components/User/User";
 import ProtectedRoute from "./components/Helper/ProtectedRoute";
 import Photo from "./components/Photo/Photo";
+import UserProfile from "./components/User/UserProfile";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="login/*" element={<Login />} />
             <Route path="conta/*" element={<ProtectedRoute><User /></ProtectedRoute>} />
             <Route path="foto/:id" element={<Photo />} />
+            <Route path="perfil/:user" element={<UserProfile />} />
           </Routes>
           <Footer />
         </UserStorage>
