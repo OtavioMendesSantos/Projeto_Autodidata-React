@@ -9,9 +9,8 @@ import Image from "../Helper/Image";
 const PhotoContent = ({ data, single = false }) => {
   const { photo, comments } = data;
   const user = useContext(UserContext);
-  console.log(user);
   return (
-    <div className={`${styles.photo} ${single ? styles.single : ''}`}>
+    <div className={`${styles.photo} ${single ? styles.single : ""}`}>
       <div className={styles.img}>
         <Image src={photo.src} alt={photo.title} />
       </div>
