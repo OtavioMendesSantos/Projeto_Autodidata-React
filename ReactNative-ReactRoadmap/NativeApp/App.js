@@ -1,22 +1,12 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Button, View, Text, StatusBar, StyleSheet } from 'react-native';
+import { Button, View, Text, StatusBar, StyleSheet, Image } from 'react-native';
+/* import VideoGalery from './pages/VideoGalery'; */
+import HomeScreen from './pages/HomeScreen';
+import VideoGalery from './pages/VideoGalery';
 
 const Stack = createNativeStackNavigator();
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
 function DetailsScreen() {
   return (
@@ -33,6 +23,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="VideoGalery" component={VideoGalery} />
       </Stack.Navigator>
     </NavigationContainer>
   );
